@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member 24 About</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="icon" href="../img/favicon.png" sizes="64x64" type="image/png">
+    <meta name="author" content="Johan Clifford">
+    <meta name="description" content="About Member24">
+    <script src="../js/dropdown.js" defer></script>
+    <script src="../js/carousel.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__row_container">
+            <h1 class="header__h1">
+                <a href="index.html" alt="Mainpage" tabindex="1">Member 24</a>
+            </h1>
+            <!-- Dropdown ikon -->
+            <button class="header__dropdown_icon_container" id="hamburger" tabindex="2">
+                <div class="header__dropdown_icon" id="icon"></div>
+            </button>
+        </div>
+        <!-- Nav -->
+        <nav class="header__nav">
+            <ul class="header__ul">
+                <li><a href="index.html" tabindex="3">Main</a></li>
+                <li><a href="index.html#main" tabindex="4">Become Member</a></li>
+                <li><a href="hours.html" tabindex="5">Hours</a></li>
+                <li><a href="contact.html" tabindex="6">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown meny -->
+        <ul class="header__dropdown_ul" id="dropdownMenu" aria-hidden="true">
+            <li class="header__dropdown_li">
+                <a href="#main" class="header__dropdown_anchor" tabindex="-1">Member</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="hours.html" class="header__dropdown_anchor" tabindex="-1">Hours</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="contact.html" class="header__dropdown_anchor" tabindex="-1">Contact</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="About.html" class="header__dropdown_anchor" tabindex="-1">About</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Bildkarusell -->
+    <section class="hero">
+        <h2 class="hero__h2">1st Class Gym</h2>
+        <figure>
+            <div class="hero__carousel">
+                <ul class="hero__img_container" data-slides id="carousel-container">
+                    <li>
+                        <img class="hero__img" data-active src="../img/Member24Main1024x683.jpg" alt="Image 1" title="Image 1">
+                        <figcaption class="offscreen">Member 24 Image 1</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24Contact1500x1000.jpg" alt="Image 2" title="Image 2">
+                        <figcaption class="offscreen">Member 24 Image 2</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24About1500x1000.jpg" alt="Image 3" title="Image 3">
+                        <figcaption class="offscreen">Member 24 Image</figcaption>
+                    </li>
+                </ul>
+                <div class="hero__carousel_button_container">
+                    <button class="hero__carousel_button" id="previous" tabindex="11">
+                        <img class="hero__carousel_button_img" src="../img/left.png" alt="previous image" title="previous image">
+                    </button>
+                    <button class="hero__carousel_button" id="next" tabindex="12">
+                        <img class="hero__carousel_button_img" src="../img/right.png" alt="next image" title="next image">
+                    </button>
+                </div>
+            </div>
+        </figure>
+    </section>
+
+    <!-- Om Member24 -->
+    <main class="main">
+        <h2 class="main__h2">About <abbr title="Member24">M24</abbr></h2>
+        <p><abbr title="Member24">M24</abbr> was founded in <time datetime="2010">2010</time> in Västerås and today there are also Member 24 gyms all over Sweden. Source(<cite>Member24)</cite></p><br>
+        <aside class="about__trivia">
+            <details>
+                <summary tabindex="13">Press here for more information about Member 24</summary>
+                <p class="about__trivia_answer">
+                    As a member in Member24 you can hire a PT as well as join in group training. 
+                    Source (<cite><a href="https://member24.se" target="_blank" tabindex="14">Member24</a></cite>)
+                </p>
+            </details>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="nowrap" tabindex="15">Copyright &copy;</span>
+        <span class="nowrap" tabindex="16">Member 24</span>
+    </footer>
+
+</body>
+
+</html>

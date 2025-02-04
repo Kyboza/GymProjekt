@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito&display=swap');
+
+/*|| BASIC SETTINGS */
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input, button, textarea{
+    font: inherit;
+}
+
+img{
+    min-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*|| UTILITY CLASSES */
+.center{
+    text-align: center;
+}
+
+.nowrap{
+    white-space: nowrap; /*Skapar inte ny rad*/
+}
+
+.offscreen{
+    left: -10000px;
+    position: absolute;
+}
+
+/*|| VARIABLES */
+:root{
+    --BGCOLOR: #333;
+    --BGCOLOR-FADE: rgb(34, 114, 159);
+    --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE)); /*Användes Förut*/
+    --BODYBGCOLOR: #fff;
+    --BODYCOLOR: #000;
+    --HEADER-BGCOLOR: rgb(34, 114, 159);
+    --HEADER-COLOR: #fff;
+    --HEADER-HOVER: #fff;
+    --NAV-BGCOLOR: #000;
+    --NAV-COLOR: #fff;
+    --BORDER-COLOR: #333;
+    --BORDER-SHADOW: #000;
+    --LINK-COLOR: #fff;
+    --LINK-HOVER: rgba(255, 255, 255, 0.8);
+    --LINK-ACTIVE:rgba(255, 255, 255, 0.8);
+    --HIGHLIGHT-COLOR: rgb(34, 114, 159);
+    --HERO-BGCOLOR: rgba(34, 114, 159, 0.8);
+    --HERO-COLOR: #000;
+    --FS: clamp(1rem, 2.25vh, 1.5rem);
+    --FF: "Nunito", "sans-serif";
+    --FF-HEADINGS: "Nunito", cursive;
+    --BORDERS: 1px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 15px;
+    --PADDING-TB: 0.25em;
+    --PADDING-SIDE: 2.5%;
+    --TEXT-SHADOW: 0px 1px 0px #000;
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+}
+
+/*|| GENERAL SETTINGS */
+html{
+    background-color: var(--BGCOLOR);
+    background-image: cover var(--BGIMAGE);
+    font-size: var(--FS);
+    font-family: var(--FF);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    -moz-osx-font-smoothing: grayscale; /*Firefox gråskalig kantutjämning och mjukare text.*/
+    -webkit-font-smoothing: antialiased; /*Webkit webläsare, äldre version av safari t.ex, mjukare text mindre pixlig*/
+    background-color: var(--BODYBGCOLOR);
+    color: var(--BODYCOLOR);
+    border: var(--BORDERS);
+    box-shadow: 0 0 10px var(--BORDER-COLOR);
+    min-height: 100vh;
+}
+
+h2, h3{
+    color: var(--HIGHLIGHT-COLOR);
+    font-family: var(--FF-HEADINGS);
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+}
+
+p{
+    line-height: 1.5rem;
+}
+
+p a:any-link{
+    color: black;
+}
+
+/*|| LINKS */
+a:any-link{
+    color: var(--LINK-COLOR);
+    text-decoration: none;
+}
+
+a:hover, a:focus-within{
+    color: var(--LINK-HOVER);
+}
+
+a:active{
+    color: var(--LINK-ACTIVE);
+}
+
+/*|| HEADER */
+.header{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.header__row_container{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--HEADER-BGCOLOR);
+    justify-content: center;
+}
+
+.header__dropdown_icon_container{
+    margin: 0;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 1rem;
+    top: 25%;
+    transform: translateY(-25%);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.header__dropdown_icon_container:focus-visible {
+    border: 1px solid black;
+}
+
+.header__dropdown_icon {
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    visibility: visible;
+    transition: visibility 0s ease;
+}
+
+.header__dropdown_icon::before,
+.header__dropdown_icon::after {
+    content: "";
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+.header__dropdown_icon::before {
+    top: -10px;
+}
+
+.header__dropdown_icon::after {
+    top: 10px;
+}
+
+.header__dropdown_icon.animate {
+    visibility: hidden;
+}
+
+.header__dropdown_icon.animate::before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.header__dropdown_icon.animate::after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.header__dropdown_ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    list-style-type: none;
+    background-color: var(--HEADER-BGCOLOR);
+    min-width: 10vw;
+    color: white;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: opacity 0.5s, max-height 0.5s;
+    z-index: 2;
+}
+
+.header__dropdown_ul.active {
+    opacity: 1;
+    max-height: 40vh;
+    z-index: 2;
+}
+
+.header__dropdown_li{
+    padding: 0.4rem;
+    text-align: center;
+    min-width: 100%;
+    border-top: 1px solid black;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.header__dropdown_anchor{
+    text-decoration: none;
+}
+
+.header__dropdown_li:nth-child(1){
+    border-top: none;
+}
+
+.header__dropdown_drop_a{
+    text-decoration: none;
+}
+
+.header__h1 :any-link{
+    color: var(--HEADER-COLOR);
+    text-decoration: none;
+}
+
+.header__h1 a:hover,
+.header__h1 a:focus-visible {
+    color: var(--HEADER-HOVER);
+}
+
+.header__h1 a:active {
+    color: var(--HEADER-COLORR);
+}
+
+.header__h1{
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    margin: 0;
+    padding: 0.4em 2.5%;
+    text-align: center;
+    border-bottom: var(--BORDERS);
+}
+
+.header__nav{
+    background-color: black;
+    border-bottom: var(--BORDERS);
+    font-size: var(--FF);
+    font-weight: bold;
+    padding: 1px 0 0 0;
+}
+
+.header__ul{
+    display: flex;
+    gap: 1em;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+/*|| HERO */
+.hero{
+    border-bottom: var(--BORDERS);
+    position: relative;
+}
+
+.hero__h2{
+    animation: showText 0.5s ease-in-out 0.5s forwards;
+    background-color: var(--HERO-BGCOLOR);
+    color: var(--HERO-COLOR);
+    left: 10px;
+    margin: 0;
+    padding: 0.25em 0.5em;
+    position: absolute;
+    text-shadow: 2px 2px 5px var(--BORDER-COLOR);
+    top: 15px;
+    transform: translateY(-400%);
+    z-index: 2000;
+}
+
+/* Studsande Animations Banner*/
+@keyframes showText{
+    0%{
+        top: -30px;
+        transform: skew(0deg, -5deg) scale(1, 0);
+    }
+
+    80%{
+        top: 30px;
+        transform: skew(10deg, -5deg) scale(0.8 ,1.2); 
+    }
+
+    100%{
+        top: 20px;
+        transform: skew(15deg, -5deg) scale(0.8, 1); 
+    }
+}
+
+.hero__carousel{
+    position: relative;
+}
+
+.hero__carousel > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.hero__carousel_button_container {
+    position: absolute;
+    inset: 0; /* Top Bottom Right Left i samma*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hero__carousel_button {
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    pointer-events: none;
+    height: 32px;
+    width: 32px;
+}
+
+.hero__carousel_button.show_button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hero__carousel_button_img {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.hero__img_container {
+    max-width: 100vw;
+    height: 40vh;
+}
+
+.hero__img {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+
+.hero__img[data-active]{
+    transition-delay: 0ms;
+    opacity: 1;
+}
+
+/*|| MAIN */
+.main{
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    flex-grow: 1;
+}
+
+thead, tbody, tfoot, tr{
+    display: contents;
+}
+
+.main__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    "hd1 hd2 hd3"
+    "gm gm1 gm1p" 
+    "gm gm2 gm2p" 
+    "gm gm3 gm3p"
+    "yc yc1 yc1p" 
+    "yc yc2 yc2p"
+    "yc yc3 yc3p"
+    "ft ft ft";
+    margin-bottom: 1em;
+}
+
+.main__gm{
+    grid-area: gm;
+}
+    
+.main__yc{
+    grid-area: yc;
+}
+    
+.main__ft{
+    grid-area: ft;
+}
+    
+
+.main__gm, .main__yc, .main__ft, .main__header{
+    color: var(--HIGHLIGHT-COLOR);
+    font-weight: bold;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.main__header, .main__item{
+    width: 100%;
+    padding: 1em;
+    border: 1px solid var(--BORDER-COLOR);
+}
+
+.main__item{
+    display: grid;
+    place-content: center;
+}
+
+thead th:first-child{
+    border-top-left-radius: var(--BORDER-RADIUS);
+}
+
+thead th:last-child{
+    border-top-right-radius: var(--BORDER-RADIUS);
+}
+
+tfoot td{
+    border-bottom-left-radius: var(--BORDER-RADIUS);
+    border-bottom-right-radius: var(--BORDER-RADIUS);
+}
+
+.main__article{
+    margin: var(--MARGIN);
+    scroll-margin-top: 6.5rem;
+}
+
+/*|| CONTACT */
+.contact__h2{
+    margin: 0;
+}
+
+.contact__fieldset{
+    border: none;
+}
+
+.contact__p{
+    margin: 1em 0;
+}
+
+.contact__label{
+    display: block;
+    font-weight: bold;
+}
+
+.contact__input .contact__textarea{
+    border-radius: var(--BORDER-RADIUS);
+    border-width: 5px;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.contact__button_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact__button{
+    background-color: var(--HIGHLIGHT-COLOR);
+    border-radius: var(--BORDER-RADIUS);
+    border: 1px solid #333;
+    color: var(--NAV-BGCOLOR);
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 0.5em; 
+}
+
+.contact__textarea{
+    padding: 5px;
+}
+
+/*|| FOOTER */
+.footer{
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    text-align: center;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    margin-top: auto;
+}
+
+/*|| MEDIA QUERIES */
+@media screen and (min-width: 768px){
+    .contact__input, .contact__textarea{
+        min-width: 60vw;
+    }
+
+    .contact__button_container{
+        justify-content: space-evenly;
+        width: 50vw;
+    }
+    
+    .contact__button{
+        padding: 0.5em 2em 0.5em 2em; 
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .contact__button_container{
+        justify-content: space-evenly;
+        width: 50vw;
+    }
+    
+    .contact__button{
+        padding: 0.5em 4em 0.5em 4em; 
+    }
+}

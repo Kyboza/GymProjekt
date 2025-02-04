@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member 24 Contact</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="icon" href="../img/favicon.png" sizes="64x64" type="image/png">
+    <meta name="author" content="Johan Clifford">
+    <meta name="description" content="Contact information to Member24">
+    <script src="../js/dropdown.js" defer></script>
+    <script src="../js/carousel.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__row_container">
+            <h1 class="header__h1">
+                <a href="index.html" alt="Mainpage" tabindex="1">Member 24</a>
+            </h1>
+            <!-- Dropdown ikon -->
+            <button class="header__dropdown_icon_container" id="hamburger" tabindex="2">
+                <div class="header__dropdown_icon" id="icon"></div>
+            </button>
+        </div>
+        <!-- Nav -->
+        <nav class="header__nav">
+            <ul class="header__ul">
+                <li><a href="index.html" tabindex="3">Main</a></li>
+                <li><a href="index.html#main" tabindex="4">Become Member</a></li>
+                <li><a href="hours.html" tabindex="5">Hours</a></li>
+                <li><a href="About.html" tabindex="6">About</a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown meny-->
+        <ul class="header__dropdown_ul" id="dropdownMenu" aria-hidden="true">
+            <li class="header__dropdown_li">
+                <a href="#main" class="header__dropdown_anchor" tabindex="-1">Member</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="hours.html" class="header__dropdown_anchor" tabindex="-1">Hours</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="contact.html" class="header__dropdown_anchor" tabindex="-1">Contact</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="About.html" class="header__dropdown_anchor" tabindex="-1">About</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Bildkarusell -->
+    <section class="hero">
+        <h2 class="hero__h2">1st Class Gym</h2>
+        <figure>
+            <div class="hero__carousel">
+                <ul class="hero__img_container" data-slides id="carousel-container">
+                    <li>
+                        <img class="hero__img" data-active src="../img/Member24Main1024x683.jpg" alt="Image 1" title="Image 1">
+                        <figcaption class="offscreen">Member 24 Image 1</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24Contact1500x1000.jpg" alt="Image 2" title="Image 2">
+                        <figcaption class="offscreen">Member 24 Image 2</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24About1500x1000.jpg" alt="Image 3" title="Image 3">
+                        <figcaption class="offscreen">Member 24 Image</figcaption>
+                    </li>
+                </ul>
+                <div class="hero__carousel_button_container">
+                    <button class="hero__carousel_button" id="previous" tabindex="11">
+                        <img class="hero__carousel_button_img" src="../img/left.png" alt="previous image" title="previous image">
+                    </button>
+                    <button class="hero__carousel_button" id="next" tabindex="12">
+                        <img class="hero__carousel_button_img" src="../img/right.png" alt="next image" title="next image">
+                    </button>
+                </div>
+            </div>
+        </figure>
+    </section>
+
+    <!-- Kontaktinfo -->
+    <main class="main">
+        <h2>Contact Us!</h2>
+        <address>
+            <p>Location: Storgatan 74</p>
+            <p>Email: member24memba@gmail.com</p><br><br>
+            <p><a href="tel:+4670829192" tabindex="13">Phone: +4670829192</a></p>
+        </address>
+        <hr>
+
+        <article class="main__article contact">
+            <h2 class="contact__h2">Contact Form</h2>
+
+            <form action="https://httpbin.org/post" method="post" class="contact__form">
+                <fieldset class="contact__fieldset">
+                    <legend class="offscreen">Contact Information</legend>
+                    <p class="contact__p">
+                        <label for="name" class="contact__label" tabindex="14">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name" class="contact__input" autocomplete="off" tabindex="15">
+                    </p>
+                    <p class="contact__p">
+                        <label for="email" class="contact__label" tabindex="16">Email</label>
+                        <input type="text" id="email" name="email" required placeholder="Your Email" class="contact__input" autocomplete="off" tabindex="17">
+                    </p>
+                    <p class="contact__p">
+                        <label for="message" class="contact__label" tabindex="18">Message</label>
+                        <textarea class="contact__textarea" name="message" id="message" cols="30" rows="10" placeholder="Write Your Message Here" tabindex="19"></textarea>
+                    </p>
+                </fieldset>
+                <div class="contact__button_container">
+                    <button type="submit" class="contact__button" tabindex="20">Submit</button>
+                    <button type="reset" class="contact__button" tabindex="21">Reset</button>
+                </div>
+            </form>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="nowrap">Copyright &copy;</span>
+        <span class="nowrap">Member 24</span>
+    </footer>
+</body>
+
+</html>

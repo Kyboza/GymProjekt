@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member 24 Home</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="icon" href="../img/favicon.png" sizes="64x64" type="image/png">
+    <meta name="author" content="Johan Clifford">
+    <meta name="description" content="The official site for the gym Member24">
+    <script src="../js/dropdown.js" defer></script>
+    <script src="../js/carousel.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__row_container">
+            <h1 class="header__h1">
+                <a href="index.html" alt="Mainpage" tabindex="1">Member 24</a>
+            </h1>
+            <!-- Dropdown icon -->
+            <button class="header__dropdown_icon_container" tabindex="2" id="hamburger">
+                <div class="header__dropdown_icon" id="icon"></div>
+            </button>
+        </div>
+        <!-- Navigation -->
+        <nav class="header__nav">
+            <ul class="header__ul">
+                <li><a href="#main" tabindex="3">Become Member</a></li>
+                <li><a href="hours.html" tabindex="4">Hours</a></li>
+                <li><a href="contact.html" tabindex="5">Contact</a></li>
+                <li><a href="About.html" tabindex="6">About</a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Menu -->
+        <ul class="header__dropdown_ul" id="dropdownMenu" aria-hidden="true">
+            <li class="header__dropdown_li">
+                <a href="#main" class="header__dropdown_anchor" tabindex="-1">Member</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="hours.html" class="header__dropdown_anchor" tabindex="-1">Hours</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="contact.html" class="header__dropdown_anchor" tabindex="-1">Contact</a>
+            </li>
+            <li class="header__dropdown_li">
+                <a href="About.html" class="header__dropdown_anchor" tabindex="-1">About</a>
+            </li>
+        </ul>
+    </header>
+    
+    <!-- Hero Section (Image Carousel) -->
+    <section class="hero">
+        <h2 class="hero__h2">1st Class Gym</h2>
+        <figure>
+            <div class="hero__carousel">
+                <ul class="hero__img_container" data-slides id="carousel-container">
+                    <li>
+                        <img class="hero__img" data-active src="../img/Member24Main1024x683.jpg" alt="Image 1" title="Image 1">
+                        <figcaption class="offscreen">Member 24 Image 1</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24Contact1500x1000.jpg" alt="Image 2" title="Image 2">
+                        <figcaption class="offscreen">Member 24 Image 2</figcaption>
+                    </li>
+                    <li>
+                        <img class="hero__img" src="../img/Member24About1500x1000.jpg" alt="Image 3" title="Image 3">
+                        <figcaption class="offscreen">Member 24 Image</figcaption>
+                    </li>
+                </ul>
+                <div class="hero__carousel_button_container">
+                    <button class="hero__carousel_button" tabindex="7">
+                        <img class="hero__carousel_button_img" src="../img/left.png" alt="previous image" title="previous image" id="previous">
+                    </button>
+                    <button class="hero__carousel_button" tabindex="8">
+                        <img class="hero__carousel_button_img" src="../img/right.png" alt="next image" title="next image" id="next">
+                    </button>
+                </div>
+            </div>
+        </figure>
+    </section>
+    
+    <!-- Main Content (Membership Table) -->
+     <main class="main">
+            <article class="main__article" id="main">
+                <h2 class="main__h2">Memberships</h2>
+                <table class="main__container">
+                    <caption class="offscreen">Our Memberships</caption>
+                    <thead>
+                        <tr>
+                            <th class="main__header" scope="col">Deals</th>
+                            <th class="main__header" scope="col">Months</th>
+                            <th class="main__header" scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="main__item main__gm" scope="row" rowspan="3">Gym</th>
+                            <td class="main__item">1</td>
+                            <td class="main__item">40$</td>
+                        </tr>
+                        <tr>
+                            <td class="main__item">2</td>
+                            <td class="main__item">50$</td>
+                        </tr>
+                        <tr>
+                            <td class="main__item">3</td>
+                            <td class="main__item">60$</td>
+                        </tr>
+                        <tr>
+                            <th class="main__item main__yc" scope="row" rowspan="3">PT Session</th>
+                            <td class="main__item">1</td>
+                            <td class="main__item">25$</td>
+                        </tr>
+                        <tr>
+                            <td class="main__item">2</td>
+                            <td class="main__item">35$</td>
+                        </tr>
+                        <tr>
+                            <td class="main__item">3</td>
+                            <td class="main__item">45$</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="main__item main__ft"><cite>Buy a 3 Month Membership to get a Free Energydrink</cite></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <br>
+                <p class="center"><a href="#">Back To Top</a></p>
+            </article>
+        </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="nowrap">Copyright &copy;</span>
+        <span class="nowrap">Member 24</span>
+    </footer>
+</body>
+</html>
